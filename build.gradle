@@ -1,0 +1,73 @@
+group 'programmer-guides'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+
+wrapper {
+    gradleVersion = "3.3"
+}
+
+ext {
+    apacheIoUtilsVersion = "2.4"
+    apacheLang3Version = "3.4"
+    asyncHttpClientVersion = "2.1.0-alpha20"
+    h2Version = "1.4.196"
+    ioNettyVersion="4.1.12.Final"
+    mysqlVersion="5.1.45"
+    junitVersion = "4.11"
+    scalatagsVersion = "0.6.5"
+    scalatestVersion = "3.2.0-SNAP5"
+    slf4jVersion = "1.7.13"
+    slickVersion = "3.2.1"
+    sparkVersion = "2.1.1"
+    springVersion = "4.2.4.RELEASE"
+    scalaVersion = "2.11.8"
+    akkaHttpVersion = "10.0.9"
+    sprayJsonVersion = '1.3.3'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+    // Scala
+    compile group: 'org.scala-lang', name: 'scala-library', version: scalaVersion
+    compile group: 'org.scala-lang', name: 'scala-compiler', version: scalaVersion
+
+    // Typesafe
+    compile group: 'com.typesafe.akka', name: 'akka-http_2.11', version: akkaHttpVersion
+    compile group: 'com.typesafe.akka', name: 'akka-http-spray-json_2.11', version: akkaHttpVersion
+    compile group: 'com.typesafe.slick', name: 'slick_2.11', version: slickVersion
+
+    compile group: 'io.netty', name: 'netty-all', version: ioNettyVersion
+    compile group: 'io.netty', name: 'netty-transport', version: ioNettyVersion
+
+    compile group: 'io.spray', name: 'spray-json_2.11', version: sprayJsonVersion
+    compile group: 'org.apache.spark', name: 'spark-sql_2.11', version: sparkVersion
+    compile group: 'org.apache.spark', name: 'spark-mllib_2.11', version: sparkVersion
+
+    //Spring
+//    compile group: 'com.springframework', name: 'spring-jdbc', version: springVersion
+
+    // Misc
+    compile group: 'com.h2database', name: 'h2', version: h2Version
+    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
+    compile group: 'com.softwaremill.macwire', name: 'macros_2.11', version: '2.3.0'
+    compile group: 'commons-io', name: 'commons-io', version: apacheIoUtilsVersion
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: apacheLang3Version
+    compile group: 'com.lihaoyi', name: 'scalatags_2.11', version: scalatagsVersion
+    compile group: 'org.asynchttpclient', name: 'async-http-client', version: asyncHttpClientVersion
+    compile group: 'org.asynchttpclient', name: 'async-http-client-netty4', version: '2.0.0-alpha12'
+
+    // Testing
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.scalatest', name: 'scalatest_2.11', version: scalatestVersion
+}
